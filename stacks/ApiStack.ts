@@ -7,13 +7,11 @@ export function ApiStack({ stack }: StackContext) {
 
   const api = new Api(stack, "Api", {
     defaults: {
-      authorizer: "iam",
       function: {
-        permissions: [table],
+        bind: [table],
         environment: {
           TABLE_NAME: table.tableName,
         },
-        timeout: 100
       }
     },
     routes: {
